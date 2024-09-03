@@ -10,6 +10,11 @@ public class Comptable {
     private String telephone;
     private ArrayList<Client> clients;
 
+    public Comptable(Long id) {
+        this.id = id;
+        this.clients = new ArrayList<>();
+    }
+
     public Comptable(Long id, String nom, String prenom, String email, String telephone) {
         this.id = id;
         this.nom = nom;

@@ -1,6 +1,8 @@
 package com.courses;
 
+import com.courses.controllers.ClientController;
 import com.courses.controllers.ComptableController;
+import com.courses.models.Client;
 
 import java.util.Scanner;
 
@@ -47,7 +49,8 @@ public class Main {
             System.out.println("2. Mettre à jour un comptable");
             System.out.println("3. Supprimer un comptable");
             System.out.println("4. Voir un comptable");
-            System.out.println("5. Voir la liste des comptables");
+            System.out.println("5. Visualiser le portefeuille clients d'un comptable");
+            System.out.println("6. Voir la liste des comptables");
             System.out.println("0. Retour");
             System.out.println("\n-------------------------------------------------------------------");
             System.out.print("Entrer votre choix: ");
@@ -55,11 +58,12 @@ public class Main {
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
             switch (choice) {
-                case 1: comptableController.createComptable(); ; break;
-                case 2: comptableController.updateComptable(); break;
-                case 3: comptableController.deleteComptable(); break;
-                case 4: comptableController.findComptable(); break;
-                case 5:comptableController.listComptables(); break;
+                case 1: comptableController.create(); ; break;
+                case 2: comptableController.update(); break;
+                case 3: comptableController.delete(); break;
+                case 4: comptableController.find(); break;
+                case 5: comptableController.showClientsPortfolio(); break;
+                case 6: comptableController.findAll(); break;
                 case 0: displayMainMenu(); break;
                 default: System.out.println("Choix invalide!"); break;
             }
@@ -67,6 +71,8 @@ public class Main {
     }
 
     private static void displayClientsMenu(){
+        ClientController clientController = new ClientController();
+
         while (true) {
             System.out.println("###################################################################");
             System.out.println("##                     Gestion Clients                        ##");
@@ -85,16 +91,11 @@ public class Main {
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
             switch (choice) {
-                case 1:
-                    System.out.println("Démarrage Creation client");; break;
-                case 2:
-                    System.out.println("Démarrage Mise à jour client"); ; break;
-                case 3:
-                    System.out.println("Démarrage suppression client"); ; break;
-                case 4:
-                    System.out.println("Démarrage detail client"); ; break;
-                case 5:
-                    System.out.println("Démarrage Liste clients"); ; break;
+                case 1: clientController.create(); break;
+                case 2:clientController.update(); break;
+                case 3:clientController.delete(); break;
+                case 4:clientController.find(); break;
+                case 5:clientController.findAll(); break;
                 case 6:
                     System.out.println("Démarrage Calcul TA unique"); ; break;
                 case 7:
